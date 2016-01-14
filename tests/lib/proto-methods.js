@@ -12,7 +12,8 @@ ruleTester.run('proto-methods', rule, {
         'savedArraySlice.call(arguments);',
         'savedObjectMethod.call(param);',
         'savedArraySlice.apply(arguments, []);',
-        'savedObjectMethod.apply(x, [y]);'
+        'savedObjectMethod.apply(x, [y]);',
+        'filter();'
     ],
 
     invalid: [
@@ -22,11 +23,39 @@ ruleTester.run('proto-methods', rule, {
                     'Object.prototype.method.call(x);' +
                     'Object.prototype.method.apply(x, []);',
             errors: [
-                { message: rule.ERR_MSG },
-                { message: rule.ERR_MSG },
-                { message: rule.ERR_MSG },
-                { message: rule.ERR_MSG }
+                { message: rule.USING_PROTO_DIRECTLY_ERR_MSG },
+                { message: rule.USING_PROTO_DIRECTLY_ERR_MSG },
+                { message: rule.USING_PROTO_DIRECTLY_ERR_MSG },
+                { message: rule.USING_PROTO_DIRECTLY_ERR_MSG }
             ]
+        },
+        {
+            code: 'arr.filter()',
+            errors: [{ message: rule.USING_ILLEGAL_ARRAY_FUNC_ERR_MSG.replace('%s', 'filter') }]
+        },
+        {
+            code: 'variable.forEach()',
+            errors: [{ message: rule.USING_ILLEGAL_ARRAY_FUNC_ERR_MSG.replace('%s', 'forEach') }]
+        },
+        {
+            code: 's.every()',
+            errors: [{ message: rule.USING_ILLEGAL_ARRAY_FUNC_ERR_MSG.replace('%s', 'every') }]
+        },
+        {
+            code: 'q1.map()',
+            errors: [{ message: rule.USING_ILLEGAL_ARRAY_FUNC_ERR_MSG.replace('%s', 'map') }]
+        },
+        {
+            code: '[2,3].some()',
+            errors: [{ message: rule.USING_ILLEGAL_ARRAY_FUNC_ERR_MSG.replace('%s', 'some') }]
+        },
+        {
+            code: 'x().reduce()',
+            errors: [{ message: rule.USING_ILLEGAL_ARRAY_FUNC_ERR_MSG.replace('%s', 'reduce') }]
+        },
+        {
+            code: 'sk.reduceRight()',
+            errors: [{ message: rule.USING_ILLEGAL_ARRAY_FUNC_ERR_MSG.replace('%s', 'reduceRight') }]
         }
     ]
 });
