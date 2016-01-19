@@ -56,6 +56,10 @@ ruleTester.run('proto-methods', rule, {
         {
             code: 'sk.reduceRight()',
             errors: [{ message: rule.USING_ILLEGAL_ARRAY_FUNC_ERR_MSG.replace('%s', 'reduceRight') }]
+        },
+        {
+            code: 'func.bind(x)',
+            errors: [{ message: rule.USING_BIND_FUNCTION_ERR_MSG }]
         }
     ]
 });
