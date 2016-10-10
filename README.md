@@ -46,3 +46,4 @@ Then configure the rules you want to use under the rules section.
 * proto-methods
 * use-hh-promise
 * use-native-methods
+* no-window-self
