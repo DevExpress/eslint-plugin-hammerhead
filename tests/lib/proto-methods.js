@@ -13,9 +13,7 @@ ruleTester.run('proto-methods', rule, {
         'savedObjectMethod.call(param);',
         'savedArraySlice.apply(arguments, []);',
         'savedObjectMethod.apply(x, [y]);',
-        'filter();',
-        'storedTest.call(re, str);',
-        'exec(re, "abc")'
+        'filter();'
     ],
 
     invalid: [
@@ -34,14 +32,6 @@ ruleTester.run('proto-methods', rule, {
         {
             code: 'Object.prototype.method.apply(x, []);',
             errors: [{ message: rule.USING_OBJECT_PROTO_DIRECTLY_ERR_MSG }]
-        },
-        {
-            code: 'RegExp.prototype.method.call(x);',
-            errors: [{ message: rule.USING_REGEXP_PROTO_DIRECTLY_ERR_MSG }]
-        },
-        {
-            code: 'RegExp.prototype.method.apply(x, []);',
-            errors: [{ message: rule.USING_REGEXP_PROTO_DIRECTLY_ERR_MSG }]
         },
         {
             code: 'arr.filter()',
@@ -74,14 +64,6 @@ ruleTester.run('proto-methods', rule, {
         {
             code: 'func.bind(x)',
             errors: [{ message: rule.USING_BIND_FUNCTION_ERR_MSG }]
-        },
-        {
-            code: '/abc/.test("abcd")',
-            errors: [{ message: rule.USING_ILLEGAL_REGEXP_FUNC_ERR_MSG.replace('%s', 'test') }]
-        },
-        {
-            code: '/123/.exec(str)',
-            errors: [{ message: rule.USING_ILLEGAL_REGEXP_FUNC_ERR_MSG.replace('%s', 'exec') }]
         }
     ]
 });
