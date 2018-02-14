@@ -2,6 +2,10 @@
   "name": "eslint-plugin-hammerhead",
   "version": "0.0.8",
   "description": "Specific rules for the hammerhead.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LavrovArtem/eslint-plugin-hammerhead.git"
+  },
   "keywords": [
     "eslint",
     "eslintplugin",
@@ -10,16 +14,17 @@
   "author": "",
   "main": "lib/index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha tests --recursive"
   },
   "dependencies": {
     "requireindex": "~1.1.0"
   },
   "devDependencies": {
-    "eslint": "^2.13.1"
+    "eslint": "~3.9.1",
+    "mocha": "^3.1.2"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">= 4.0.0"
   },
   "license": "ISC"
 }
