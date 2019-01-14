@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-hammerhead",
-  "version": "0.1.11",
+  "version": "0.2.0",
   "description": "Specific rules for the hammerhead.",
   "repository": {
     "type": "git",
