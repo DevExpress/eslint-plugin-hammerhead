@@ -29,6 +29,11 @@ new RuleTester().run('use-hh-promise', rule, {
                   '"something"' +
                   ']);',
             parserOptions: { ecmaVersion: 6, sourceType: 'module' }
+        },
+        {
+            code: 'const { createNativeXHR: d, utils: a = 4, Promise } = hammerhead;' +
+                  'Promise.resolve();',
+            parserOptions: { ecmaVersion: 7 }
         }
     ],
 
