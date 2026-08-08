@@ -20,7 +20,7 @@
     "requireindex": "~1.1.0"
   },
   "devDependencies": {
-    "eslint": "~6.6.0",
+    "eslint": "~10.8.1",
     "mocha": "^10.0.0"
   },
   "engines": {
